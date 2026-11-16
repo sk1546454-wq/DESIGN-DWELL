@@ -3,194 +3,333 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DESIGN &amp; DWELL | Crafted Memories</title>
-<meta name="description" content="Custom jewellery, personalised gifts and luxury home decor by DESIGN & DWELL.">
+<meta name="theme-color" content="#17130f">
+<title>DESIGN & DWELL | Crafted Memories</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-:root{--black:#100e0c;--panel:#191612;--gold:#c9a66b;--gold2:#e6cc9b;--cream:#f6f0e6;--muted:#b7aa98;--line:rgba(201,166,107,.28)}
-*{box-sizing:border-box}body{margin:0;background:var(--black);color:var(--cream);font-family:Georgia,'Times New Roman',serif}.topline{height:4px;background:linear-gradient(90deg,#80613b,var(--gold2),#80613b)}
-header{padding:24px 6%;display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line)}.brand{color:var(--gold2);font-size:20px;letter-spacing:4px;text-decoration:none}.tag{display:block;font-size:10px;letter-spacing:3px;color:var(--muted);margin-top:6px;text-align:center}.nav{font:11px Arial,sans-serif;letter-spacing:2px;color:var(--muted)}
-.hero{min-height:340px;padding:78px 20px 68px;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(201,166,107,.16),transparent 65%),linear-gradient(135deg,#17130f,#0d0c0b)}.eyebrow{font:10px Arial,sans-serif;letter-spacing:4px;color:var(--gold2)}h1{font-weight:400;font-size:clamp(35px,7vw,64px);letter-spacing:5px;margin:20px 0 12px;color:var(--gold2)}.hero p{font:13px Arial,sans-serif;letter-spacing:2px;color:var(--muted);line-height:1.9}
-.section{padding:48px 6%;max-width:1400px;margin:auto}.sectionhead{text-align:center;margin-bottom:30px}.sectionhead h2{font-weight:400;letter-spacing:4px;color:var(--gold2);font-size:26px}.sectionhead p{font:11px Arial,sans-serif;color:var(--muted);letter-spacing:1px}
-.filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:25px 0}.filter{background:transparent;border:1px solid var(--line);color:var(--muted);padding:10px 16px;cursor:pointer;font:10px Arial,sans-serif;letter-spacing:1px}.filter.active,.filter:hover{background:var(--gold);color:#17120c;border-color:var(--gold)}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}.product{background:var(--panel);border:1px solid var(--line);overflow:hidden}.product img{width:100%;height:245px;object-fit:cover;background:#262019;display:block}.productbody{padding:17px}.product h3{font-weight:400;color:var(--gold2);font-size:18px;margin:0 0 8px}.category{font:10px Arial,sans-serif;color:var(--muted);letter-spacing:2px;text-transform:uppercase}.price{font:15px Arial,sans-serif;color:var(--gold2);margin:12px 0}.desc{font:12px/1.7 Arial,sans-serif;color:var(--muted);min-height:34px}.order{display:inline-block;margin-top:10px;padding:10px 13px;border:1px solid var(--gold);color:var(--gold2);text-decoration:none;font:10px Arial,sans-serif;letter-spacing:1px}
-.empty{text-align:center;color:var(--muted);padding:35px;font:13px Arial,sans-serif}.about{text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#15120f}.about p{max-width:700px;margin:0 auto;color:var(--muted);font:13px/2 Arial,sans-serif}
-footer{padding:32px 6%;text-align:center;color:var(--muted);font:10px Arial,sans-serif;letter-spacing:2px}.admin-open{margin-top:18px;background:transparent;border:1px solid var(--line);color:var(--gold2);padding:10px 17px;cursor:pointer;font:10px Arial,sans-serif;letter-spacing:2px}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.84);z-index:10;overflow:auto;padding:22px}.modal.show{display:block}.adminbox{max-width:760px;margin:35px auto;background:#17130f;border:1px solid var(--gold);padding:24px;position:relative}.adminbox h2{font-weight:400;color:var(--gold2);letter-spacing:3px}.close{position:absolute;right:16px;top:12px;background:none;border:0;color:var(--gold2);font-size:25px;cursor:pointer}.field{margin:12px 0}.field label{display:block;font:10px Arial,sans-serif;color:var(--muted);letter-spacing:1px;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;padding:12px;background:#0e0c0a;border:1px solid var(--line);color:var(--cream);font:13px Arial,sans-serif}.field textarea{min-height:75px;resize:vertical}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:1px solid var(--gold);background:var(--gold);color:#17120c;padding:11px 16px;cursor:pointer;font:10px Arial,sans-serif;letter-spacing:1px}.btn.secondary{background:transparent;color:var(--gold2)}.btn.danger{border-color:#a65b51;background:#a65b51;color:white}.status{font:12px Arial,sans-serif;color:var(--gold2);margin:12px 0;white-space:pre-wrap}.adminlist{margin-top:24px;border-top:1px solid var(--line);padding-top:14px}.adminitem{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font:12px Arial,sans-serif}.adminitem span{color:var(--muted)}.hidden{display:none!important}.linkbtn{border:0;background:none;color:var(--gold2);text-decoration:underline;cursor:pointer;padding:10px 0;font:12px Arial,sans-serif}
-@media(max-width:600px){header{padding:18px 5%}.nav{display:none}.hero{min-height:280px;padding:62px 18px}.section{padding:38px 5%}.product img{height:220px}.adminbox{padding:18px;margin:10px auto}}
+:root{--ink:#211b16;--gold:#b58a43;--cream:#f8f4ec;--paper:#fffdf9;--muted:#776f65}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,'Times New Roman',serif}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}
+.topbar{background:#17130f;color:#f8f1e5;text-align:center;padding:9px 14px;font:11px Arial,sans-serif;letter-spacing:2px}
+header{background:#fffdf9;display:flex;align-items:center;justify-content:space-between;padding:12px clamp(16px,5vw,70px);gap:20px;border-bottom:1px solid #e9dfcf;position:sticky;top:0;z-index:5}
+.logo{display:flex;align-items:center;gap:10px}.logo img{width:66px;height:66px;object-fit:contain}.brand{font-size:19px;letter-spacing:2px}.tag{display:block;font:10px Arial,sans-serif;letter-spacing:3px;color:var(--gold);margin-top:5px}
+nav{display:flex;gap:24px;font:12px Arial,sans-serif;letter-spacing:1px;text-transform:uppercase}
+nav a:hover,.textlink:hover{color:var(--gold)}.menu{display:none;border:1px solid #d8c8ae;background:white;padding:9px 12px}
+.hero{min-height:470px;display:grid;grid-template-columns:1.05fr .95fr;background:#211b16;color:#fff8ed}
+.hero-copy{padding:clamp(35px,7vw,95px);display:flex;flex-direction:column;justify-content:center}.eyebrow{font:11px Arial,sans-serif;letter-spacing:3px;color:#d8b879;text-transform:uppercase}
+h1{font-size:clamp(40px,5.8vw,76px);font-weight:400;line-height:1.03;margin:20px 0}.hero p{color:#e5d9c8;line-height:1.8;max-width:440px;font-size:16px}
+.hero-image{min-height:360px;background:linear-gradient(90deg,#211b16 0%,transparent 25%),url('assets/product-03.png') center/cover no-repeat}
+.btn{display:inline-block;border:1px solid var(--gold);background:var(--gold);color:#fff;padding:14px 22px;font:11px Arial,sans-serif;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center}
+.btn.outline{background:transparent;color:var(--gold)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+section{padding:65px clamp(16px,5vw,70px)}.section-head{text-align:center;margin-bottom:30px}.section-head small{font:10px Arial,sans-serif;letter-spacing:3px;color:var(--gold)}h2{font-size:clamp(28px,4vw,42px);font-weight:400;margin:10px 0}.section-head p{font:13px Arial,sans-serif;color:var(--muted)}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.category{background:#e9dfcf;padding:25px 12px;text-align:center;border:1px solid #dfd1bc}.category b{display:block;font-size:17px;font-weight:400}.category span{display:block;font:10px Arial,sans-serif;color:var(--muted);margin-top:7px}
+.shop{background:var(--paper)}.filters{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:25px 0}.filter{border:1px solid #d9c9b0;background:transparent;padding:9px 14px;font:11px Arial,sans-serif;cursor:pointer}.filter.active{background:#211b16;color:#fff}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}.product{background:#fff;border:1px solid #eee5d8;padding-bottom:15px}.product img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#eee8dd;display:block}.product-info{padding:13px}.product h3{font-size:17px;font-weight:400;margin:0 0 8px}.price{font:12px Arial,sans-serif;color:var(--gold);margin-bottom:12px}.product .btn{width:100%;padding:11px 8px}
+.custom{background:#211b16;color:#fff8ed;display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}.custom p{color:#e5d9c8;line-height:1.8}.custom img{width:100%;max-height:360px;object-fit:cover}
+.gifts{background:#f1e8da}.gift-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.gift-card{background:#fff;padding:12px}.gift-card img{width:100%;aspect-ratio:1.4;object-fit:cover}.gift-card h3{font-weight:400;margin:12px 5px}
+.order{background:#fffdf9}.order-box{max-width:650px;margin:auto;border:1px solid #e6d8c4;padding:25px}.order-box label{display:block;font:11px Arial,sans-serif;letter-spacing:1px;margin:13px 0 6px}.order-box input,.order-box select,.order-box textarea{width:100%;padding:12px;border:1px solid #d9cbb8;background:white}.order-box .btn{width:100%;margin-top:15px}
+footer{background:#17130f;color:#eee2d1;padding:40px 20px;text-align:center}footer img{width:76px;height:76px;object-fit:contain;background:#fff;border-radius:50%;padding:5px}footer p{font:11px Arial,sans-serif;color:#c8bba8;letter-spacing:1px;line-height:1.8}.notice{font:11px Arial,sans-serif;color:var(--muted);text-align:center;margin-top:16px}
+.admin-entry{margin-top:12px;background:transparent;border:1px solid #8c754f;color:#d9c39e;padding:8px 15px;font:10px Arial,sans-serif;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer}
+.admin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:30;overflow:auto;padding:20px}.admin-overlay.open{display:block}
+.admin-panel{max-width:850px;margin:25px auto;background:#fffdf9;border:1px solid #c7a66e;padding:clamp(18px,4vw,34px);position:relative}
+.admin-top{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #e7dccb;padding-bottom:15px;margin-bottom:20px}
+.admin-top h2{font-size:28px;margin:0}.close-admin{border:1px solid #d7c8b2;background:white;padding:8px 12px;cursor:pointer}
+.admin-panel label{display:block;font:11px Arial,sans-serif;letter-spacing:1px;margin:12px 0 6px}
+.admin-panel input,.admin-panel select,.admin-panel textarea{width:100%;padding:11px;border:1px solid #d9cbb8;background:white}
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.admin-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.admin-actions button,.admin-list button{border:1px solid var(--gold);padding:10px 14px;background:var(--gold);color:white;cursor:pointer;font:11px Arial,sans-serif;letter-spacing:1px}
+.admin-actions .secondary,.admin-list .secondary{background:white;color:#6e542d}
+.admin-status{font:12px Arial,sans-serif;line-height:1.6;color:#6e542d;margin:12px 0;overflow-wrap:anywhere}
+.admin-list{margin-top:25px;border-top:1px solid #e7dccb;padding-top:15px}.admin-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #eee5d8}
+.admin-item img{width:58px;height:58px;object-fit:cover;background:#eee}.admin-item-info{flex:1;min-width:0;font:12px Arial,sans-serif}.admin-item-info strong{display:block;font-size:13px;margin-bottom:5px}.admin-item-actions{display:flex;gap:6px;flex-wrap:wrap}.admin-list button{padding:7px 9px;font-size:10px}
+@media(max-width:800px){nav{display:none}.menu{display:block}.hero{grid-template-columns:1fr}.hero-image{min-height:280px;grid-row:1}.hero-copy{padding:35px 24px}.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr);gap:12px}.custom{grid-template-columns:1fr}.gift-grid{grid-template-columns:1fr 1fr}header{padding:9px 14px}.logo img{width:52px;height:52px}.brand{font-size:15px}}
+@media(max-width:520px){.admin-grid{grid-template-columns:1fr}.admin-item{align-items:flex-start;flex-wrap:wrap}.admin-item-actions{width:100%;padding-left:70px}}
+@media(max-width:390px){.products{grid-template-columns:1fr 1fr}.product h3{font-size:15px}.gift-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div class="topline"></div>
-<header><a class="brand" href="#">DESIGN &amp; DWELL<span class="tag">CRAFTED MEMORIES</span></a><div class="nav">CUSTOM JEWELLERY&nbsp; · &nbsp;PERSONALISED GIFTS</div></header>
-<section class="hero"><div class="eyebrow">MADE WITH MEANING</div><h1>DESIGN &amp; DWELL</h1><p>Custom Jewellery · Personalised Gifts · Luxury Home Decor<br>Thoughtfully crafted, beautifully remembered.</p></section>
-<section class="section">
- <div class="sectionhead"><h2>OUR COLLECTION</h2><p>DISCOVER SOMETHING MADE JUST FOR YOU</p></div>
- <div class="filters" id="filters"><button class="filter active" data-category="All">ALL</button><button class="filter" data-category="Custom Jewellery">CUSTOM JEWELLERY</button><button class="filter" data-category="Personalised Gifts">PERSONALISED GIFTS</button><button class="filter" data-category="Luxury Home Decor">HOME DECOR</button></div>
- <div id="products" class="products"><div class="empty">Loading collection...</div></div>
-</section>
-<section class="section about"><div class="sectionhead"><h2>CRAFTED MEMORIES</h2></div><p>DESIGN &amp; DWELL is a custom jewellery and customised gift making brand. We create thoughtful pieces and personalised keepsakes designed to make every memory special.</p></section>
-<footer>© <span id="year"></span> DESIGN &amp; DWELL · CRAFTED MEMORIES<br><button class="admin-open" id="openAdmin">ADMIN PANEL</button></footer>
+<div class="topbar">A LITTLE LUXURY, MADE PERSONAL</div>
+<header>
+  <a class="logo" href="#home"><img src="assets/logo.png" alt="DESIGN & DWELL logo"><span><span class="brand">DESIGN & DWELL</span><span class="tag">CRAFTED MEMORIES.</span></span></a>
+  <nav><a href="#home">Home</a><a href="#shop">Shop</a><a href="#custom">Custom Design</a><a href="#gifts">Gifts</a><a href="#contact">Contact</a></nav>
+  <button class="menu" onclick="document.querySelector('#shop').scrollIntoView()">Shop Now</button>
+</header>
 
-<div class="modal" id="adminModal" aria-hidden="true"><div class="adminbox">
-<button class="close" id="closeAdmin" aria-label="Close">×</button>
-<h2>ADMIN PANEL</h2><p class="category">SIGN IN TO MANAGE YOUR PRODUCTS</p>
-<div id="loginArea">
- <div class="field"><label>ADMIN EMAIL</label><input id="email" type="email" autocomplete="username" placeholder="Your Supabase login email"></div>
- <div class="field"><label>PASSWORD</label><input id="password" type="password" autocomplete="current-password" placeholder="Your password"></div>
- <button class="btn" id="loginBtn">LOGIN</button>
- <div><button class="linkbtn" id="forgotBtn">Forgot password?</button></div>
+<main id="home">
+<section class="hero" style="padding:0">
+  <div class="hero-copy">
+    <div class="eyebrow">DESIGNED TO MAKE YOU SHINE</div>
+    <h1>Every piece<br>tells a story.</h1>
+    <p>Discover imitation jewellery and thoughtful personalised gifts, selected to make everyday moments feel special.</p>
+    <div class="actions"><a class="btn" href="#shop">Explore Jewellery</a><a class="btn outline" href="#gifts">Explore Gifts</a></div>
+  </div>
+  <div class="hero-image" role="img" aria-label="Jewellery collection"></div>
+</section>
+
+<section>
+  <div class="section-head"><small>FIND YOUR STYLE</small><h2>Shop by Collection</h2><p>Beautiful details for every occasion.</p></div>
+  <div class="categories">
+    <a class="category" href="#shop" onclick="setFilter('Gold Plated')"><b>Gold Plated</b><span>Classic glow</span></a>
+    <a class="category" href="#shop" onclick="setFilter('American Diamond')"><b>American Diamond</b><span>Everyday sparkle</span></a>
+    <a class="category" href="#shop" onclick="setFilter('Kundan')"><b>Kundan</b><span>Traditional charm</span></a>
+    <a class="category" href="#shop" onclick="setFilter('Oxidised')"><b>Oxidised</b><span>Distinctive style</span></a>
+  </div>
+</section>
+
+<section class="shop" id="shop">
+  <div class="section-head"><small>THE COLLECTION</small><h2>Our Jewellery</h2><p>Ready-made styles and designs to inspire your custom order.</p></div>
+  <div class="filters">
+    <button class="filter active" onclick="setFilter('All')">All</button>
+    <button class="filter" onclick="setFilter('Gold Plated')">Gold Plated</button>
+    <button class="filter" onclick="setFilter('American Diamond')">American Diamond</button>
+    <button class="filter" onclick="setFilter('Kundan')">Kundan</button>
+    <button class="filter" onclick="setFilter('Oxidised')">Oxidised</button>
+  </div>
+  <div class="products" id="products"><p class="notice">Loading collection...</p></div>
+  <p class="notice">Product availability and prices are subject to confirmation.</p>
+</section>
+
+<section class="custom" id="custom">
+  <div><div class="eyebrow">MADE FOR YOUR STORY</div><h2>Have a design in mind?</h2><p>Tell us what you love. Share your preferred style, colour or personalisation and ask us about a custom-made design.</p><a class="btn" href="#order">Request a Custom Order</a></div>
+  <img src="assets/product-08.png" alt="Jewellery inspiration">
+</section>
+
+<section class="gifts" id="gifts">
+  <div class="section-head"><small>THOUGHTFUL SURPRISES</small><h2>Personalised Gifts</h2><p>Make meaningful moments memorable.</p></div>
+  <div class="gift-grid">
+    <div class="gift-card"><img src="assets/product-09.png" alt="Personalised gift idea"><h3>Personalised Gift Ideas</h3></div>
+    <div class="gift-card"><img src="assets/product-10.png" alt="Custom gift idea"><h3>Custom Gift Collection</h3></div>
+  </div>
+</section>
+
+<section class="order" id="order">
+  <div class="section-head"><small>WE'D LOVE TO HEAR FROM YOU</small><h2>Start Your Order</h2><p>Send your product choice and details directly to our WhatsApp.</p></div>
+  <div class="order-box">
+    <form id="orderForm">
+      <label>Your Name</label><input id="name" required placeholder="Enter your name">
+      <label>Mobile Number</label><input id="phone" required inputmode="tel" placeholder="Your contact number">
+      <label>Product / Collection</label><select id="item"><option>Gold Plated Jewellery</option><option>American Diamond Jewellery</option><option>Kundan Jewellery</option><option>Oxidised Jewellery</option><option>Custom Design Request</option><option>Personalised Gift</option></select>
+      <label>Order Details</label><textarea id="details" rows="4" placeholder="Product name, quantity, size, customisation, delivery city..."></textarea>
+      <button class="btn" type="submit">Send Order on WhatsApp</button>
+    </form>
+  </div>
+  <p class="notice">This sends an enquiry to WhatsApp. It does not collect payment or create a confirmed order.</p>
+</section>
+</main>
+<footer id="contact">
+  <img src="assets/logo.png" alt="DESIGN & DWELL logo">
+  <h2>DESIGN & DWELL</h2><p>CRAFTED MEMORIES.</p>
+  <p>Imitation Jewellery · Custom Designs · Personalised Gifts</p>
+  <p>WhatsApp: +91 70296 32384</p>
+  <p>© <span id="year"></span> DESIGN & DWELL. All rights reserved.</p>
+  <button class="admin-entry" type="button" onclick="openAdmin()">Admin Login</button>
+</footer>
+
+<div class="admin-overlay" id="adminOverlay" role="dialog" aria-modal="true" aria-label="Admin panel">
+ <div class="admin-panel">
+  <div class="admin-top"><h2>DESIGN & DWELL Admin</h2><button class="close-admin" type="button" onclick="closeAdmin()">Close ✕</button></div>
+  <div id="loginArea">
+   <p class="notice" style="text-align:left">Sign in with your authorised Supabase admin email and password.</p>
+   <label>Admin Email</label><input id="adminEmail" type="email" autocomplete="username" placeholder="Your admin email">
+   <label>Password</label><input id="adminPassword" type="password" autocomplete="current-password" placeholder="Your password">
+   <div class="admin-actions"><button type="button" onclick="adminLogin()">Login</button></div>
+  </div>
+  <div id="managerArea" hidden>
+   <p class="admin-status" id="adminWelcome">Signed in.</p>
+   <h3 id="formHeading">Add a Product</h3>
+   <input id="editId" type="hidden">
+   <div class="admin-grid">
+    <div><label>Product Name</label><input id="pName" maxlength="120" placeholder="e.g. Wedding Band"></div>
+    <div><label>Category</label><select id="pCategory"><option>Gold Plated</option><option>American Diamond</option><option>Kundan</option><option>Oxidised</option><option>Custom Jewellery</option><option>Personalised Gift</option><option>Luxury Home Decor</option></select></div>
+    <div><label>Price (INR ₹)</label><input id="pPrice" type="number" min="0" step="1" placeholder="e.g. 250"></div>
+    <div><label>Product Image</label><input id="pImage" type="file" accept="image/*"></div>
+   </div>
+   <label>Description (optional)</label><textarea id="pDescription" rows="3" maxlength="1000" placeholder="Product details"></textarea>
+   <div class="admin-actions"><button type="button" onclick="saveProduct()">Save Product</button><button class="secondary" type="button" onclick="resetProductForm()">Clear Form</button><button class="secondary" type="button" onclick="adminLogout()">Logout</button></div>
+   <p class="admin-status" id="adminStatus" aria-live="polite"></p>
+   <div class="admin-list"><h3>Current Products</h3><div id="adminProducts">Loading...</div></div>
+  </div>
+  <p class="admin-status">Admin access is protected by Supabase sign-in and database policies. Never share your password or Secret Key.</p>
+ </div>
 </div>
-<div id="resetRequestArea" class="hidden">
- <p class="category">SEND A PASSWORD RESET LINK TO YOUR ADMIN EMAIL</p>
- <div class="field"><label>ADMIN EMAIL</label><input id="resetEmail" type="email" placeholder="Your Supabase login email"></div>
- <div class="actions"><button class="btn" id="sendResetBtn">SEND RESET LINK</button><button class="btn secondary" id="backLogin1">BACK TO LOGIN</button></div>
-</div>
-<div id="newPasswordArea" class="hidden">
- <p class="category">CREATE A NEW ADMIN PASSWORD</p>
- <div class="field"><label>NEW PASSWORD (AT LEAST 6 CHARACTERS)</label><input id="newPassword" type="password" autocomplete="new-password"></div>
- <div class="field"><label>CONFIRM NEW PASSWORD</label><input id="confirmPassword" type="password" autocomplete="new-password"></div>
- <div class="actions"><button class="btn" id="updatePasswordBtn">UPDATE PASSWORD</button></div>
-</div>
-<div id="manageArea" class="hidden">
- <div class="status" id="welcome"></div>
- <h3 style="font-weight:400;color:var(--gold2)">ADD / EDIT PRODUCT</h3>
- <input type="hidden" id="productId">
- <div class="field"><label>PRODUCT NAME</label><input id="pname" placeholder="e.g. Personalised Couple Pendant"></div>
- <div class="field"><label>CATEGORY</label><select id="pcategory"><option>Custom Jewellery</option><option>Personalised Gifts</option><option>Luxury Home Decor</option></select></div>
- <div class="field"><label>PRICE (₹)</label><input id="pprice" type="number" min="0" step="1" placeholder="e.g. 999"></div>
- <div class="field"><label>DESCRIPTION</label><textarea id="pdescription" placeholder="Short product description"></textarea></div>
- <div class="field"><label>PRODUCT IMAGE</label><input id="pimage" type="file" accept="image/*"></div>
- <div class="actions"><button class="btn" id="saveProduct">SAVE PRODUCT</button><button class="btn secondary" id="resetForm">CLEAR</button><button class="btn secondary" id="logoutBtn">LOG OUT</button></div>
- <div class="adminlist"><h3 style="font-weight:400;color:var(--gold2)">YOUR PRODUCTS</h3><div id="adminProducts"></div></div>
-</div>
-<div class="status" id="adminStatus"></div>
-</div></div>
 
 <script>
-const SUPABASE_URL='https://lxfkbdcuqcrrljybdeyw.supabase.co';
-const SUPABASE_ANON_KEY='sb_publishable_nrUyFhxJ30_3DaKmwgd_Yg_okAK0tWR';
-const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
-const TABLE='product',BUCKET='product-images';
-let allProducts=[],activeCategory='All',recoveryMode=false;
-const $=id=>document.getElementById(id);
-$('year').textContent=new Date().getFullYear();
-function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function money(v){return '₹'+Number(v||0).toLocaleString('en-IN');}
-function status(msg){$('adminStatus').textContent=msg;}
-function showSection(which){
- ['loginArea','resetRequestArea','newPasswordArea','manageArea'].forEach(id=>$(id).classList.toggle('hidden',id!==which));
+/* Supabase project configuration: publishable key is intended for browser use.
+   Database and Storage security must remain enforced by Supabase RLS policies. */
+const SUPABASE_URL = 'https://lxfkbdcuqcrrljybdeyw.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_nrUyFhxJ30_3DaKmwgd_Yg_okAK0tWR';
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const WHATSAPP_NUMBER = '917029632384';
+const STORAGE_BUCKET = 'product-images';
+
+const starterProducts = [
+ {name:'Wedding Band',cat:'Gold Plated',img:'wedding-band.png',price:250},
+ {name:'Jewellery Design 02',cat:'American Diamond',img:'product-02.png'},
+ {name:'Jewellery Design 03',cat:'Kundan',img:'product-03.png'},
+ {name:'Jewellery Design 04',cat:'Oxidised',img:'product-04.png'},
+ {name:'Jewellery Design 05',cat:'Gold Plated',img:'product-05.png'},
+ {name:'Jewellery Design 06',cat:'American Diamond',img:'product-06.png'},
+ {name:'Jewellery Design 07',cat:'Kundan',img:'product-07.png'},
+ {name:'Jewellery Design 08',cat:'Oxidised',img:'product-08.png'}
+];
+let products = starterProducts.map((p,i)=>({...p,id:'starter-'+i,image_url:'assets/'+p.img}));
+let current='All';
+let editingProduct=null;
+
+function setFilter(cat){
+ current=cat;
+ document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.textContent===cat));
+ render();
 }
-function renderProducts(){
- const items=activeCategory==='All'?allProducts:allProducts.filter(p=>p.category===activeCategory);
- $('products').innerHTML=items.length?items.map(p=>`<article class="product">
- <img src="${esc(p.image_url||'')}" alt="${esc(p.name)}" onerror="this.style.display='none'">
- <div class="productbody"><div class="category">${esc(p.category)}</div><h3>${esc(p.name)}</h3><div class="price">${money(p.price)}</div><div class="desc">${esc(p.description||'')}</div>
- <a class="order" href="https://wa.me/?text=${encodeURIComponent('Hello DESIGN & DWELL, I am interested in '+p.name+'.')}" target="_blank" rel="noopener">ENQUIRE ON WHATSAPP</a></div></article>`).join(''):'<div class="empty">No products in this category yet. Please check back soon.</div>';
+function escapeHTML(value){
+ return String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 }
-document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');activeCategory=b.dataset.category;renderProducts();}));
-async function loadProducts(){
- const {data,error}=await supabaseClient.from(TABLE).select('*').order('created_at',{ascending:false});
- if(error){$('products').innerHTML='<div class="empty">Products could not be loaded. Please check the Supabase Public Read Products policy.</div>';console.error('Product load error:',error);return;}
- allProducts=data||[];renderProducts();
+function productImage(p){return p.image_url || (p.img ? 'assets/'+p.img : '');}
+function render(){
+ const list=products.filter(p=>current==='All'||p.category===current||p.cat===current);
+ const container=document.getElementById('products');
+ if(!list.length){container.innerHTML='<p class="notice">No products in this collection yet.</p>';return;}
+ container.innerHTML=list.map(p=>{
+  const name=escapeHTML(p.name);
+  const price=Number(p.price)>0?'₹'+Number(p.price).toLocaleString('en-IN'):'Price to be confirmed';
+  const image=escapeHTML(productImage(p));
+  return `<article class="product"><img src="${image}" alt="${name}" loading="lazy"><div class="product-info"><h3>${name}</h3><div class="price">${price}</div><button class="btn" type="button" onclick="chooseProduct('${String(p.name).replace(/\\/g,'\\\\').replace(/'/g,"\\'")}')">Enquire / Order</button></div></article>`;
+ }).join('');
+}
+async function loadPublicProducts(){
+ const {data,error}=await supabaseClient.from('product').select('*').order('created_at',{ascending:false});
+ if(error){
+  console.warn('Supabase product read failed:',error.message);
+  products=starterProducts.map((p,i)=>({...p,id:'starter-'+i,image_url:'assets/'+p.img}));
+  render();
+  return;
+ }
+ products=(data||[]).map(p=>({...p,category:p.category||'Gold Plated'}));
+ render();
+}
+function chooseProduct(name){
+ document.getElementById('item').value='Custom Design Request';
+ document.getElementById('details').value='I am interested in '+name+'. Please share availability and ordering details.';
+ document.getElementById('order').scrollIntoView({behavior:'smooth'});
+}
+document.getElementById('orderForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ const msg=`Hello DESIGN & DWELL! I would like to enquire about an order.\nName: ${document.getElementById('name').value}\nPhone: ${document.getElementById('phone').value}\nProduct: ${document.getElementById('item').value}\nDetails: ${document.getElementById('details').value}`;
+ window.open('https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(msg),'_blank');
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+
+function openAdmin(){
+ document.getElementById('adminOverlay').classList.add('open');
+ checkAdminSession();
+}
+function closeAdmin(){document.getElementById('adminOverlay').classList.remove('open');}
+document.getElementById('adminOverlay').addEventListener('click',e=>{if(e.target.id==='adminOverlay')closeAdmin();});
+
+async function checkAdminSession(){
+ const {data:{session}}=await supabaseClient.auth.getSession();
+ showAdminState(!!session,session?.user?.email||'');
+ if(session) await loadAdminProducts();
+}
+function showAdminState(isLoggedIn,email){
+ document.getElementById('loginArea').hidden=isLoggedIn;
+ document.getElementById('managerArea').hidden=!isLoggedIn;
+ document.getElementById('adminWelcome').textContent=isLoggedIn?'Signed in as '+email:'';
+}
+async function adminLogin(){
+ const email=document.getElementById('adminEmail').value.trim();
+ const password=document.getElementById('adminPassword').value;
+ const status=document.getElementById('adminStatus');
+ if(!email||!password){alert('Please enter your admin email and password.');return;}
+ status.textContent='Signing in...';
+ const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
+ if(error){status.textContent='Login failed: '+error.message;return;}
+ showAdminState(true,data.user.email);
+ document.getElementById('adminPassword').value='';
+ status.textContent='Login successful. Loading products...';
+ await loadAdminProducts();
+}
+async function adminLogout(){
+ await supabaseClient.auth.signOut();
+ showAdminState(false,'');
+ document.getElementById('adminStatus').textContent='You have been logged out.';
+ resetProductForm();
 }
 async function loadAdminProducts(){
- const {data,error}=await supabaseClient.from(TABLE).select('*').order('created_at',{ascending:false});
- if(error){$('adminProducts').textContent='Could not load products: '+error.message;return;}
- $('adminProducts').innerHTML=(data||[]).map(p=>`<div class="adminitem"><div><strong>${esc(p.name)}</strong><br><span>${esc(p.category)} · ${money(p.price)}</span></div><div class="actions"><button class="btn secondary" data-edit="${esc(p.id)}">EDIT</button><button class="btn danger" data-delete="${esc(p.id)}">DELETE</button></div></div>`).join('')||'<div class="empty">No products added yet.</div>';
- $('adminProducts').querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>editProduct(b.dataset.edit));
- $('adminProducts').querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>deleteProduct(b.dataset.delete));
+ const box=document.getElementById('adminProducts');
+ box.textContent='Loading products...';
+ const {data,error}=await supabaseClient.from('product').select('*').order('created_at',{ascending:false});
+ if(error){box.textContent='Could not load products: '+error.message;return;}
+ box.innerHTML=(data||[]).length?(data||[]).map(p=>{
+  const image=escapeHTML(p.image_url||'assets/logo.png');
+  return `<div class="admin-item"><img src="${image}" alt=""><div class="admin-item-info"><strong>${escapeHTML(p.name)}</strong>${escapeHTML(p.category||'')} · ₹${Number(p.price||0).toLocaleString('en-IN')}</div><div class="admin-item-actions"><button class="secondary" type="button" onclick="editProduct('${p.id}')">Edit</button><button type="button" onclick="deleteProduct('${p.id}')">Delete</button></div></div>`;
+ }).join(''):'<p class="notice">No products yet. Add your first product above.</p>';
 }
-async function showAdmin(){
- const {data:{session}}=await supabaseClient.auth.getSession();
- if(session){showSection('manageArea');$('welcome').textContent='Signed in: '+session.user.email;await loadAdminProducts();}
- else showSection('loginArea');
+function resetProductForm(){
+ editingProduct=null;
+ document.getElementById('editId').value='';
+ document.getElementById('pName').value='';
+ document.getElementById('pCategory').value='Gold Plated';
+ document.getElementById('pPrice').value='';
+ document.getElementById('pImage').value='';
+ document.getElementById('pDescription').value='';
+ document.getElementById('formHeading').textContent='Add a Product';
 }
-$('openAdmin').onclick=async()=>{$('adminModal').classList.add('show');$('adminModal').setAttribute('aria-hidden','false');await showAdmin();};
-$('closeAdmin').onclick=()=>{$('adminModal').classList.remove('show');$('adminModal').setAttribute('aria-hidden','true');};
-$('adminModal').addEventListener('click',e=>{if(e.target===$('adminModal'))$('closeAdmin').click();});
-$('loginBtn').onclick=async()=>{
- const email=$('email').value.trim(),password=$('password').value;
- if(!email||!password){status('Please enter your email and password.');return;}
- status('Signing in...');
- const {error}=await supabaseClient.auth.signInWithPassword({email,password});
- if(error){status('Login failed: '+error.message);return;}
- status('Login successful.');await showAdmin();
-};
-$('forgotBtn').onclick=()=>{showSection('resetRequestArea');$('resetEmail').value=$('email').value.trim();status('');};
-$('backLogin1').onclick=()=>{showSection('loginArea');status('');};
-$('sendResetBtn').onclick=async()=>{
- const email=$('resetEmail').value.trim();
- if(!email){status('Please enter your admin email.');return;}
- const redirectTo=window.location.origin+window.location.pathname+'?reset=1';
- status('Sending password reset email...');
- const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo});
- if(error){status('Could not send reset email: '+error.message);return;}
- status('Reset link sent. Check your email inbox and spam folder. Open the link on this website to set a new password.');
-};
-$('updatePasswordBtn').onclick=async()=>{
- const p=$('newPassword').value,c=$('confirmPassword').value;
- if(p.length<6){status('Password must be at least 6 characters.');return;}
- if(p!==c){status('The passwords do not match.');return;}
- status('Updating password...');
- const {error}=await supabaseClient.auth.updateUser({password:p});
- if(error){status('Password update failed: '+error.message);return;}
- recoveryMode=false;history.replaceState({},document.title,window.location.pathname);
- $('newPassword').value='';$('confirmPassword').value='';
- status('Password updated successfully. You can now log in with your new password.');
- showSection('loginArea');
-};
-function resetForm(){$('productId').value='';$('pname').value='';$('pcategory').value='Custom Jewellery';$('pprice').value='';$('pdescription').value='';$('pimage').value='';}
-$('resetForm').onclick=resetForm;
 async function editProduct(id){
- const {data,error}=await supabaseClient.from(TABLE).select('*').eq('id',id).single();
- if(error){status('Could not open product: '+error.message);return;}
- $('productId').value=data.id;$('pname').value=data.name||'';$('pcategory').value=data.category||'Custom Jewellery';$('pprice').value=data.price||'';$('pdescription').value=data.description||'';$('pimage').value='';
- status('Editing '+data.name+'. Select a new image only if you want to replace it.');
+ const {data,error}=await supabaseClient.from('product').select('*').eq('id',id).single();
+ if(error){document.getElementById('adminStatus').textContent='Could not open product: '+error.message;return;}
+ editingProduct=data;
+ document.getElementById('editId').value=data.id;
+ document.getElementById('pName').value=data.name||'';
+ document.getElementById('pCategory').value=data.category||'Gold Plated';
+ document.getElementById('pPrice').value=data.price??'';
+ document.getElementById('pDescription').value=data.description||'';
+ document.getElementById('pImage').value='';
+ document.getElementById('formHeading').textContent='Edit Product';
+ document.getElementById('adminStatus').textContent='Editing '+data.name+'. Choose a new image only if you want to replace the current one.';
+ document.getElementById('formHeading').scrollIntoView({behavior:'smooth',block:'center'});
 }
-async function deleteProduct(id){
- if(!confirm('Delete this product?'))return;
- const {error}=await supabaseClient.from(TABLE).delete().eq('id',id);
- if(error){status('Delete failed: '+error.message);return;}
- status('Product deleted.');await loadAdminProducts();await loadProducts();
-}
-$('saveProduct').onclick=async()=>{
- const name=$('pname').value.trim(),category=$('pcategory').value,price=Number($('pprice').value),description=$('pdescription').value.trim(),file=$('pimage').files[0],id=$('productId').value;
- if(!name||!$('pprice').value||!Number.isFinite(price)||price<0){status('Please enter a product name and valid price.');return;}
- status('Saving product...');
- let image_url=null;
+async function saveProduct(){
+ const status=document.getElementById('adminStatus');
+ const name=document.getElementById('pName').value.trim();
+ const category=document.getElementById('pCategory').value;
+ const price=document.getElementById('pPrice').value;
+ const description=document.getElementById('pDescription').value.trim();
+ const file=document.getElementById('pImage').files[0];
+ if(!name){status.textContent='Please enter a product name.';return;}
+ if(price===''||!Number.isFinite(Number(price))||Number(price)<0){status.textContent='Please enter a valid price (use 0 if price is not fixed yet).';return;}
+ status.textContent='Saving product...';
+ let image_url=editingProduct?.image_url||'';
  if(file){
+  if(!file.type.startsWith('image/')){status.textContent='Please choose an image file.';return;}
   const safeName=file.name.toLowerCase().replace(/[^a-z0-9._-]/g,'-');
-  const path=Date.now()+'-'+safeName;
-  const {error:uploadError}=await supabaseClient.storage.from(BUCKET).upload(path,file,{upsert:false});
-  if(uploadError){status('Image upload failed: '+uploadError.message);return;}
-  const {data:publicData}=supabaseClient.storage.from(BUCKET).getPublicUrl(path);
+  const filePath=Date.now()+'-'+Math.random().toString(36).slice(2)+'-'+safeName;
+  const {error:uploadError}=await supabaseClient.storage.from(STORAGE_BUCKET).upload(filePath,file,{cacheControl:'3600',upsert:false,contentType:file.type});
+  if(uploadError){status.textContent='Image upload failed: '+uploadError.message;return;}
+  const {data:publicData}=supabaseClient.storage.from(STORAGE_BUCKET).getPublicUrl(filePath);
   image_url=publicData.publicUrl;
  }
- const values={name,category,price,description};
- if(image_url)values.image_url=image_url;
+ const record={name,category,price:Number(price),description,image_url};
  let result;
- if(id)result=await supabaseClient.from(TABLE).update(values).eq('id',id);
- else result=await supabaseClient.from(TABLE).insert(values);
- if(result.error){status('Could not save product: '+result.error.message);return;}
- status('Product saved successfully.');resetForm();await loadAdminProducts();await loadProducts();
-};
-$('logoutBtn').onclick=async()=>{await supabaseClient.auth.signOut();status('Logged out.');resetForm();showSection('loginArea');};
-supabaseClient.auth.onAuthStateChange((event,session)=>{
- if(event==='PASSWORD_RECOVERY'){recoveryMode=true;showSection('newPasswordArea');$('adminModal').classList.add('show');status('Enter and confirm your new password below.');}
- else if(event==='SIGNED_IN'&&!recoveryMode){showSection('manageArea');$('welcome').textContent='Signed in: '+(session?.user?.email||'');loadAdminProducts();}
-});
-(async()=>{
- await loadProducts();
- const params=new URLSearchParams(window.location.search);
- if(params.get('reset')==='1'){
-  $('adminModal').classList.add('show');
-  status('If you opened the password reset email link, enter your new password below.');
-  const {data:{session}}=await supabaseClient.auth.getSession();
-  if(session){showSection('newPasswordArea');}
-  else{showSection('newPasswordArea');}
+ if(editingProduct){
+  result=await supabaseClient.from('product').update(record).eq('id',editingProduct.id);
+ }else{
+  result=await supabaseClient.from('product').insert(record);
  }
-})();
+ if(result.error){status.textContent='Could not save product: '+result.error.message;return;}
+ status.textContent='Product saved successfully.';
+ resetProductForm();
+ await loadAdminProducts();
+ await loadPublicProducts();
+}
+async function deleteProduct(id){
+ if(!confirm('Are you sure you want to delete this product?'))return;
+ const {error}=await supabaseClient.from('product').delete().eq('id',id);
+ if(error){document.getElementById('adminStatus').textContent='Delete failed: '+error.message;return;}
+ document.getElementById('adminStatus').textContent='Product deleted.';
+ await loadAdminProducts();
+ await loadPublicProducts();
+}
+loadPublicProducts();
 </script>
 </body>
 </html>
