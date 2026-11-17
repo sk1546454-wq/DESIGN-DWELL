@@ -49,7 +49,7 @@ footer{background:#17130f;color:#eee2d1;padding:40px 20px;text-align:center}foot
 <body>
 <div class="topbar">A LITTLE LUXURY, MADE PERSONAL</div>
 <header>
-  <a class="logo" href="#home"><img src="assets/logo.png" alt="DESIGN & DWELL logo"><span><span class="brand">DESIGN & DWELL</span><span class="tag">CRAFTED MEMORIES.</span></span></a>
+  <a class="logo" href="#home"><img src="logo.png" alt="DESIGN & DWELL logo"><span><span class="brand">DESIGN & DWELL</span><span class="tag">CRAFTED MEMORIES.</span></span></a>
   <nav><a href="#home">Home</a><a href="#shop">Shop</a><a href="#custom">Custom Design</a><a href="#gifts">Gifts</a><a href="#contact">Contact</a></nav>
   <button class="menu" onclick="document.querySelector('#shop').scrollIntoView()">Shop Now</button>
 </header>
@@ -116,7 +116,7 @@ footer{background:#17130f;color:#eee2d1;padding:40px 20px;text-align:center}foot
 </section>
 </main>
 <footer id="contact">
-  <img src="assets/logo.png" alt="DESIGN & DWELL logo">
+  <img src="logo.png" alt="DESIGN & DWELL logo">
   <h2>DESIGN & DWELL</h2><p>CRAFTED MEMORIES.</p>
   <p>Imitation Jewellery · Custom Designs · Personalised Gifts</p>
   <p>WhatsApp: +91 70296 32384</p>
@@ -260,7 +260,7 @@ async function loadAdminProducts(){
  const {data,error}=await supabaseClient.from('product').select('*').order('created_at',{ascending:false});
  if(error){box.textContent='Could not load products: '+error.message;return;}
  box.innerHTML=(data||[]).length?(data||[]).map(p=>{
-  const image=escapeHTML(p.image_url||'assets/logo.png');
+  const image=escapeHTML(p.image_url||'logo.png');
   return `<div class="admin-item"><img src="${image}" alt=""><div class="admin-item-info"><strong>${escapeHTML(p.name)}</strong>${escapeHTML(p.category||'')} · ₹${Number(p.price||0).toLocaleString('en-IN')}</div><div class="admin-item-actions"><button class="secondary" type="button" onclick="editProduct('${p.id}')">Edit</button><button type="button" onclick="deleteProduct('${p.id}')">Delete</button></div></div>`;
  }).join(''):'<p class="notice">No products yet. Add your first product above.</p>';
 }
