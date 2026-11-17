@@ -391,7 +391,15 @@ function calculateSelectedPrice(){
   const sizeSteps=(size-reference)/step;
   sizeFactor=Math.max(0.5,1+(sizeSteps*Number(cfg.sizeAdjustmentPerStep||0.015)));
  }
- const metalFactor=Number((cfg.metalMultipliers||{})[metal]||1);
+ const metalMultipliers = {
+  'Imitation': 1,
+  'Silver': 1.5,
+  'Gold': 2,
+  'White Gold': 2.2,
+  'Rose Gold': 2.1,
+  'Platinum': 2.8
+};
+const metalFactor = metalMultipliers[metal] || 1;
  const raw=base*metalFactor*sizeFactor;
  const roundTo=Math.max(1,Number(cfg.roundTo||10));
  return Math.round(raw/roundTo)*roundTo;
